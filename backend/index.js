@@ -4,13 +4,17 @@ var routes = require('./routes');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
-mongoose.connect("mongodb://localhost:27017/project",{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://anubhavchaudhary674:darkhunter@darkhunter.4fxr4nn.mongodb.net/webtech", { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+  retryWrites: true // Add retryWrites option
+})
 .then(() => {
   console.log('Connected to MongoDB');
   // Additional code here if needed
 })
 .catch(err => {
-  console.error('Error connecting to MongoDB:', err.message);
+  console.error('Error connecting to MongoDB:', err);
 });
 server.use(express.static('frontend'));
 server.use(cors({// Allow requests from this origin
